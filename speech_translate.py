@@ -30,11 +30,16 @@ translator = Translator()
 # translator.translate('大家好', dest='en').text    
 lang = 'en'
 #print("Say something in Chinese:")
-audio_source= listenTo()
+while True:
+    audio_source= listenTo()
 
-print(audio_source)
+    print(audio_source)
 
-result = translator.translate(audio_source, lang).text
-print(result)
-speak(result, lang) 
-time.sleep(7)
+    result = translator.translate(audio_source, lang).text
+    print(result)
+    speak(result, lang) 
+    str_leng =len(result)
+    print('str_leng=',str_leng)
+    delay_sec= str_leng // 10
+    time.sleep(delay_sec)
+    # ctrl-c to break
