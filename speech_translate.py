@@ -17,7 +17,10 @@ def listenTo():
         return r.recognize_google(audio, language='zh-TW')
     except speech_recognition.UnknownValueError:
         print("Google Speech Recognition not understand audio") 
-        return "沒有聽到聲音"   
+        return "沒有聽到聲音"  
+    except speech_recognition.RequestError as e:
+        print("No response from Google Speech Recognition service: {0}".format(e))
+        return "跳出程式"
 
 
 def speak(sentence, lang):
