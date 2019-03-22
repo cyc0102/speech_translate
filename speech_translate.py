@@ -39,7 +39,7 @@ while True:
     print(result)
     speak(result, lang) 
     str_leng =len(result)
-    print('str_leng=',str_leng)
+    # print('str_leng=',str_leng)
     delay_sec= str_leng // 10
     time.sleep(delay_sec)
     # ctrl-c to break
