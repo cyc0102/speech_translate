@@ -13,8 +13,11 @@ def listenTo():
         r.adjust_for_ambient_noise(source)
         print("Say something in Chinese:")
         audio = r.listen(source)
-
-    return r.recognize_google(audio, language='zh-TW')
+    try:
+        return r.recognize_google(audio, language='zh-TW')
+    except speech_recognition.UnknownValueError:
+        print("Google Speech Recognition not understand audio") 
+        return "沒有聽到聲音"   
 
 
 def speak(sentence, lang):
@@ -34,7 +37,8 @@ while True:
     audio_source= listenTo()
 
     print(audio_source)
-
+    if (audio_source == '跳出程式'):  # speak"跳出程式" to exit the program
+        break
     result = translator.translate(audio_source, lang).text
     print(result)
     speak(result, lang) 
@@ -42,4 +46,4 @@ while True:
     # print('str_leng=',str_leng)
     delay_sec= str_leng // 10
     time.sleep(delay_sec)
-    # ctrl-c to break
+    
