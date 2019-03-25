@@ -3,6 +3,17 @@ import speech_recognition
 import tempfile
 from gtts import gTTS
 from pygame import mixer
+
+def ini_microphone():
+     r = speech_recognition.Recognizer()
+     with speech_recognition.Microphone() as source:
+        print("Please wait. Calibrating microphone for 1 sec...") 
+        # listen for 3 seconds and create the ambient noise energy level 
+        # r.adjust_for_ambient_noise(source, duration=1)
+        r.adjust_for_ambient_noise(source, duration=1)
+        #print("Say something in Chinese:")
+        #audio = r.listen(source)
+
 def listenTo():
     r = speech_recognition.Recognizer()
 
@@ -10,7 +21,7 @@ def listenTo():
         # print("Please wait. Calibrating microphone for 3 sec...") 
         # listen for 3 seconds and create the ambient noise energy level 
         # r.adjust_for_ambient_noise(source, duration=1)
-        r.adjust_for_ambient_noise(source)
+        # r.adjust_for_ambient_noise(source)
         print("Say something in Chinese:")
         audio = r.listen(source)
     try:
@@ -36,6 +47,7 @@ translator = Translator()
 # translator.translate('大家好', dest='en').text    
 lang = 'en'
 #print("Say something in Chinese:")
+ini_microphone()
 while True:
     audio_source= listenTo()
 
