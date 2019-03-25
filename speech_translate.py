@@ -4,8 +4,8 @@ import tempfile
 from gtts import gTTS
 from pygame import mixer
 
-def ini_microphone():
-     r = speech_recognition.Recognizer()
+r = speech_recognition.Recognizer()
+def ini_microphone():    
      with speech_recognition.Microphone() as source:
         print("Please wait. Calibrating microphone for 2 sec...") 
         # listen for 3 seconds and create the ambient noise energy level 
@@ -15,8 +15,6 @@ def ini_microphone():
         #audio = r.listen(source)
 
 def listenTo():
-    r = speech_recognition.Recognizer()
-
     with speech_recognition.Microphone() as source:
         # print("Please wait. Calibrating microphone for 3 sec...") 
         # listen for 3 seconds and create the ambient noise energy level 
@@ -59,6 +57,7 @@ while True:
     speak(result, lang) 
     str_leng =len(result)
     # print('str_leng=',str_leng)
-    delay_sec= str_leng // 10
+    delay_sec= str_leng // 8
+    print('delay=',delay_sec)
     time.sleep(delay_sec)
     
