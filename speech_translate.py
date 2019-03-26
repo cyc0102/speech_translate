@@ -7,10 +7,10 @@ from pygame import mixer
 r = speech_recognition.Recognizer()
 def ini_microphone():    
      with speech_recognition.Microphone() as source:
-        print("Please wait. Calibrating microphone for 2 sec...") 
+        print("Please wait. Calibrating microphone for 3 sec...") 
         # listen for 3 seconds and create the ambient noise energy level 
         # r.adjust_for_ambient_noise(source, duration=1)
-        r.adjust_for_ambient_noise(source, duration=2)
+        r.adjust_for_ambient_noise(source, duration=3)
         #print("Say something in Chinese:")
         #audio = r.listen(source)
 
@@ -19,7 +19,7 @@ def listenTo():
         # print("Please wait. Calibrating microphone for 3 sec...") 
         # listen for 3 seconds and create the ambient noise energy level 
         # r.adjust_for_ambient_noise(source, duration=1)
-        # r.adjust_for_ambient_noise(source)
+        # r.adjust_for_ambient_noise(source, duration=1)
         print("Say something in Chinese:")
         audio = r.listen(source)
     try:
@@ -59,5 +59,5 @@ while True:
     # print('str_leng=',str_leng)
     delay_sec= str_leng // 8
     print('delay=',delay_sec)
-    time.sleep(delay_sec)
+    # time.sleep(delay_sec)
     
